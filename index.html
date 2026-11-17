@@ -1,1019 +1,527 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Mashrafi Tasnim Turja — Portfolio</title>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2310131C'/%3E%3Ctext x='50%25' y='53%25' font-family='Arial, Helvetica, sans-serif' font-weight='700' font-size='34' fill='%232FD9C4' text-anchor='middle' dominant-baseline='middle'%3EM%3C/text%3E%3C/svg%3E">
+<meta name="description" content="Esports team manager and tournament operations professional from Dhaka. Team Manager for Inertia Esports, Wolves Den (PMBC 2020 champion) and more; Project Manager for events of up to 780+ teams.">
+<meta name="theme-color" content="#0c1210">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230c1210'/%3E%3Ctext x='50%25' y='56%25' font-family='Georgia,serif' font-style='italic' font-size='38' fill='%2362e0a6' text-anchor='middle' dominant-baseline='middle'%3EM%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
-  /* ===========================================================
-     DESIGN TOKENS
-  =========================================================== */
-  :root{
-    --ink:#10131C;
-    --ink-soft:#1A1F2E;
-    --paper:#F4F5F7;
-    --paper-card:#FFFFFF;
-    --cyan:#2FD9C4;
-    --cyan-dim:#1FA492;
-    --amber:#F2B705;
-    --line:#26314A;
-    --text-dim:#8B93A7;
-    --text-body:#3A4256;
-    --radius:10px;
-    --maxw:1080px;
-  }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  html{scroll-behavior:smooth;}
-  body{
-    background:var(--paper);
-    color:var(--text-body);
-    font-family:'Inter', sans-serif;
-    line-height:1.6;
-    overflow-x:hidden;
-  }
-  h1,h2,h3,h4{
-    font-family:'Barlow Condensed', sans-serif;
-    color:var(--ink);
-    font-weight:700;
-    letter-spacing:0.01em;
-  }
-  a{color:inherit; text-decoration:none;}
-  img{display:block; max-width:100%;}
-  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px;}
-  section{padding:88px 0;}
-  .section-label{
-    font-family:'Barlow Condensed', sans-serif;
-    font-size:15px;
-    font-weight:600;
-    color:var(--cyan-dim);
-    margin-bottom:10px;
-  }
-  .section-head{margin-bottom:44px; max-width:640px;}
-  .section-head h2{font-size:38px; line-height:1.05; margin-bottom:10px;}
-  .section-head p{color:var(--text-dim); font-size:16px;}
+:root{
+  --pitch:#0c1210; --panel:#131c18; --line:#24312b; --bone:#ece8dc; --mute:#8f9d95;
+  --signal:#62e0a6; --gold:#e8c46a; --paper:#ece8dc; --paper-ink:#14201a;
+  --serif:'Instrument Serif', Georgia, serif; --sans:'Hanken Grotesk', system-ui, sans-serif;
+  --wrap:1120px; --gut:clamp(18px,5vw,40px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--pitch);color:var(--bone);font-family:var(--sans);font-size:16px;line-height:1.6;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.05;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+a{color:inherit}
+img{max-width:100%;display:block}
+:focus-visible{outline:2px solid var(--signal);outline-offset:3px;border-radius:4px}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gut);position:relative;z-index:1}
+.num{font-variant-numeric:tabular-nums}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.02;letter-spacing:-.01em}
+.skip{position:absolute;left:-999px}.skip:focus{left:12px;top:12px;background:var(--signal);color:#04110b;padding:8px 12px;z-index:100;border-radius:6px}
 
-  /* ===========================================================
-     NAV
-  =========================================================== */
-  nav{
-    position:sticky; top:0; z-index:50;
-    background:rgba(16,19,28,0.92);
-    backdrop-filter:blur(8px);
-    border-bottom:1px solid var(--line);
-  }
-  nav .wrap{
-    display:flex; align-items:center; justify-content:space-between;
-    height:64px;
-  }
-  .brand{
-    font-family:'Barlow Condensed', sans-serif;
-    font-weight:700; font-size:18px; color:#fff;
-    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
-    max-width:190px;
-  }
-  @media(min-width:480px){.brand{font-size:20px; max-width:none;}}
-  .brand span{color:var(--cyan);}
-  .navlinks{display:none; gap:28px;}
-  .navlinks a{
-    color:#B7BECF; font-size:14.5px; font-weight:500;
-    transition:color .15s ease;
-  }
-  .navlinks a:hover{color:var(--cyan);}
-  @media(min-width:860px){.navlinks{display:flex;}}
+/* nav */
+nav.top{position:sticky;top:0;z-index:50;background:rgba(12,18,16,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav.top .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.brand{font-family:var(--serif);font-size:22px;text-decoration:none}
+.links{display:flex;gap:26px;align-items:center;font-size:14px;color:var(--mute)}
+.links a{text-decoration:none;transition:color .15s}.links a:hover{color:var(--bone)}
+.links .cta{color:#04110b;background:var(--signal);padding:7px 14px;border-radius:999px;font-weight:600}
+.links .cta:hover{color:#04110b;background:#86f0be}
+.burger{display:none;background:none;border:1px solid var(--line);color:var(--bone);border-radius:8px;width:42px;height:38px;font-size:18px;cursor:pointer}
+.mobile{display:none;border-top:1px solid var(--line);background:var(--pitch)}
+.mobile.open{display:block}
+.mobile a{display:block;padding:14px var(--gut);text-decoration:none;border-bottom:1px solid var(--line);color:var(--bone)}
 
-  /* Mobile hamburger */
-  .navtoggle{
-    display:flex; flex-direction:column; gap:5px; background:none; border:none;
-    cursor:pointer; padding:8px;
-  }
-  @media(min-width:860px){.navtoggle{display:none;}}
-  .navtoggle span{width:22px; height:2px; background:#fff; display:block;}
-  .navmobile{
-    display:none; flex-direction:column;
-    background:var(--ink-soft); border-bottom:1px solid var(--line);
-  }
-  .navmobile.open{display:flex;}
-  .navmobile a{
-    color:#C7CDDC; font-size:15px; font-weight:500; padding:14px 28px;
-    border-top:1px solid var(--line);
-  }
-  @media(min-width:860px){.navmobile{display:none !important;}}
+/* hero */
+.hero{padding:clamp(40px,8vw,96px) 0 40px}
+.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(28px,5vw,64px);align-items:end}
+.live{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--mute);margin-bottom:22px}
+.live i{width:8px;height:8px;border-radius:50%;background:var(--signal);box-shadow:0 0 0 0 rgba(98,224,166,.6);animation:pulse 2.4s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 9px rgba(98,224,166,0)}100%{box-shadow:0 0 0 0 rgba(98,224,166,0)}}
+#heroName{font-size:clamp(56px,10.5vw,148px);letter-spacing:-.025em}
+.lede{max-width:34em;margin-top:26px;font-size:clamp(17px,2vw,20px);color:#cfd6cf}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.btn{display:inline-block;padding:12px 20px;border-radius:999px;text-decoration:none;font-weight:600;font-size:15px;border:1px solid var(--line);transition:.15s}
+.btn.primary{background:var(--signal);color:#04110b;border-color:var(--signal)}
+.btn.primary:hover{background:#86f0be}
+.btn:not(.primary):hover{border-color:var(--bone)}
+.portrait{position:relative;justify-self:end;width:min(100%,320px)}
+.portrait .frame{aspect-ratio:4/5;border-radius:6px;overflow:hidden;background:var(--panel);border:1px solid var(--line)}
+.portrait img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.portrait .tag{position:absolute;left:-14px;bottom:18px;background:var(--bone);color:var(--paper-ink);padding:8px 12px;border-radius:4px;font-size:13px;font-weight:600;transform:rotate(-2deg);box-shadow:0 8px 24px rgba(0,0,0,.35)}
+.initials{height:100%;display:grid;place-items:center;font-family:var(--serif);font-size:84px;color:var(--signal)}
 
-  /* ===========================================================
-     HERO
-  =========================================================== */
-  .hero{
-    background:
-      radial-gradient(circle at 85% -10%, rgba(47,217,196,0.16), transparent 45%),
-      var(--ink);
-    color:#fff;
-    padding:96px 0 0 0;
-    position:relative;
-  }
-  .hero-inner{
-    display:grid; grid-template-columns:1fr; gap:36px;
-    padding-bottom:60px;
-  }
-  @media(min-width:860px){
-    .hero-inner{grid-template-columns:1.3fr 0.9fr; align-items:end;}
-  }
-  .hero-eyebrow{
-    color:var(--cyan); font-size:15px; font-weight:600;
-    font-family:'Barlow Condensed', sans-serif;
-    margin-bottom:14px;
-  }
-  .hero h1{
-    font-size:clamp(46px, 8vw, 84px);
-    line-height:0.96;
-    color:#fff;
-  }
-  .hero .role{
-    font-size:clamp(18px, 2.4vw, 24px);
-    color:#C7CDDC;
-    font-family:'Inter', sans-serif;
-    font-weight:500;
-    margin-top:18px;
-    max-width:520px;
-  }
-  .hero-photo{
-    width:200px; height:240px; border-radius:14px;
-    background:var(--ink-soft);
-    border:1px dashed #3B4560;
-    display:flex; flex-direction:column; align-items:center; justify-content:center;
-    color:var(--text-dim); font-size:13px; text-align:center; gap:8px;
-    justify-self:start;
-  }
-  @media(min-width:860px){.hero-photo{justify-self:end;}}
-  .hero-photo .plus{font-size:28px; color:var(--cyan);}
-  .hero-photo.hero-photo-empty{
-    border-style:solid; border-color:var(--line);
-    background:linear-gradient(135deg, var(--ink), var(--cyan-dim));
-  }
-  .hero-initials{font-family:'Barlow Condensed', sans-serif; font-size:64px; font-weight:700; color:#fff; letter-spacing:1px;}
+/* results board (hero centrepiece) */
+.board{margin-top:clamp(36px,6vw,72px);border:1px solid var(--line);border-radius:10px;background:linear-gradient(180deg,var(--panel),#101814);overflow:hidden}
+.board-head{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:14px 20px;border-bottom:1px solid var(--line);font-size:13px;color:var(--mute)}
+.board-head b{color:var(--bone);font-weight:600}
+.row{display:grid;grid-template-columns:84px 1fr auto;gap:16px;align-items:baseline;padding:14px 20px;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:0}
+.place{font-family:var(--serif);font-size:44px;line-height:1;color:var(--bone)}
+.place sup{font-size:.4em;vertical-align:top;margin-left:2px;font-family:var(--sans);font-weight:600;letter-spacing:.02em}
+.row.gold .place{color:var(--gold)}
+.row .ev{font-weight:600}
+.row .sub{display:block;font-size:13.5px;color:var(--mute);font-weight:400}
+.row .prize{font-size:14px;color:var(--mute);text-align:right;white-space:nowrap}
+.row.gold .prize{color:var(--gold)}
+.js .row{opacity:0;transform:translateY(8px);animation:rowIn .5s forwards}
+@keyframes rowIn{to{opacity:1;transform:none}}
 
-  .stat-strip{
-    display:grid; grid-template-columns:repeat(2,1fr);
-    border-top:1px solid var(--line);
-  }
-  @media(min-width:640px){.stat-strip{grid-template-columns:repeat(4,1fr);}}
-  .stat{
-    padding:26px 28px;
-    border-right:1px solid var(--line);
-    border-bottom:1px solid var(--line);
-  }
-  .stat:last-child{border-right:none;}
-  .stat .num{
-    font-family:'Barlow Condensed', sans-serif;
-    font-size:44px; font-weight:700; color:var(--cyan);
-    line-height:1;
-  }
-  .stat .lbl{font-size:13.5px; color:var(--text-dim); margin-top:6px;}
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);margin-top:40px;border-top:1px solid var(--line)}
+.stat{padding:22px 18px 4px 0}
+.stat .n{font-family:var(--serif);font-size:clamp(36px,5vw,56px);line-height:1}
+.stat .l{font-size:13.5px;color:var(--mute);margin-top:6px;max-width:14em}
 
-  /* ===========================================================
-     BUTTONS
-  =========================================================== */
-  .btnrow{display:flex; gap:14px; margin-top:30px; flex-wrap:wrap;}
-  .btn{
-    padding:13px 22px; border-radius:8px; font-weight:600; font-size:14.5px;
-    display:inline-flex; align-items:center; gap:8px;
-  }
-  .btn-primary{background:var(--cyan); color:var(--ink);}
-  .btn-ghost{border:1px solid #3B4560; color:#fff;}
+/* sections */
+section{padding:clamp(56px,9vw,112px) 0;position:relative;z-index:1}
+.head{display:grid;grid-template-columns:200px 1fr;gap:24px;margin-bottom:40px}
+.head .k{font-size:14px;color:var(--signal);padding-top:10px}
+.head h2{font-size:clamp(34px,5vw,60px);max-width:16em}
+.head p{color:var(--mute);margin-top:12px;max-width:36em}
 
-  /* ===========================================================
-     ABOUT
-  =========================================================== */
-  .about-grid{
-    display:grid; grid-template-columns:1fr; gap:40px;
-  }
-  @media(min-width:800px){.about-grid{grid-template-columns:1.4fr 1fr;}}
-  .about-text p{font-size:16.5px; color:var(--text-body); margin-bottom:16px;}
-  .skill-block{margin-bottom:22px;}
-  .skill-block h4{font-size:14px; color:var(--ink); font-family:'Inter'; font-weight:700; margin-bottom:10px; text-transform:none;}
-  .chips{display:flex; flex-wrap:wrap; gap:8px;}
-  .chip{
-    background:var(--paper-card); border:1px solid #E3E6EC;
-    padding:6px 12px; border-radius:20px; font-size:13.5px; color:var(--text-body);
-  }
+/* about (paper) */
+#about{background:var(--paper);color:var(--paper-ink)}
+#about .head .k{color:#1a7a52}
+#about p{color:#2a3a31}
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,5vw,64px)}
+.about-grid p+p{margin-top:16px}
+.about-grid p{font-size:17.5px;max-width:34em}
+.skills h4{font-family:var(--sans);font-size:14px;font-weight:700;margin:0 0 8px}
+.skills .grp{margin-bottom:22px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid #b9b49f;border-radius:999px;padding:5px 12px;font-size:13.5px;background:#f4f1e7}
 
-  /* ===========================================================
-     TIMELINE (EXPERIENCE)
-  =========================================================== */
-  .timeline{position:relative; padding-left:26px;}
-  .timeline::before{
-    content:""; position:absolute; left:6px; top:6px; bottom:6px; width:2px;
-    background:#DCE0E8;
-  }
-  .tl-item{position:relative; padding-bottom:40px;}
-  .tl-item:last-child{padding-bottom:0;}
-  .tl-dot{
-    position:absolute; left:-26px; top:4px; width:14px; height:14px; border-radius:50%;
-    background:var(--cyan); border:3px solid var(--paper);
-    box-shadow:0 0 0 2px var(--cyan);
-  }
-  .tl-card{
-    background:var(--paper-card); border:1px solid #E3E6EC; border-radius:var(--radius);
-    padding:24px 26px;
-  }
-  .tl-top{
-    display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:8px;
-    margin-bottom:6px;
-  }
-  .tl-top h3{font-size:22px; color:var(--ink);}
-  .tl-date{
-    font-size:13px; font-weight:600; color:var(--cyan-dim);
-    font-family:'Barlow Condensed'; white-space:nowrap;
-  }
-  .tl-org{font-size:14.5px; color:var(--text-dim); margin-bottom:12px; font-weight:500;}
-  .tl-card ul{padding-left:18px; font-size:15px; color:var(--text-body);}
-  .tl-card li{margin-bottom:6px;}
-  .tag{
-    display:inline-block; font-size:11.5px; font-weight:600; color:var(--amber);
-    background:rgba(242,183,5,0.12); border:1px solid rgba(242,183,5,0.3);
-    padding:2px 9px; border-radius:20px; margin-left:8px; vertical-align:middle;
-  }
+/* lists */
+.team{border-top:1px solid var(--line)}
+details.item{border-bottom:1px solid var(--line)}
+details.item>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:200px 1fr auto;gap:24px;align-items:start;padding:22px 0}
+details.item>summary::-webkit-details-marker{display:none}
+details.item .when{font-size:14px;color:var(--mute);padding-top:6px}
+details.item .what{font-family:var(--serif);font-size:clamp(26px,3.2vw,38px);line-height:1.08}
+details.item .org{display:block;font-family:var(--sans);font-size:14.5px;color:var(--mute);margin-top:6px}
+details.item .badge{display:inline-block;margin-left:8px;font-family:var(--sans);font-size:11.5px;font-weight:600;border:1px solid var(--gold);color:var(--gold);border-radius:999px;padding:2px 9px;vertical-align:middle}
+details.item .tog{width:30px;height:30px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;color:var(--mute);transition:.2s;margin-top:4px}
+details.item[open] .tog{transform:rotate(45deg);border-color:var(--signal);color:var(--signal)}
+details.item>summary:hover .what{color:#fff}
+.body{padding:0 0 26px 224px;max-width:calc(224px + 40em);color:#c7d0ca}
+.body p+p{margin-top:10px}
+.body table{width:100%;border-collapse:collapse;margin-top:14px;font-size:14px}
+.body td{padding:8px 10px 8px 0;border-top:1px solid var(--line);vertical-align:top}
+.body td:first-child{font-family:var(--serif);font-size:22px;width:56px;line-height:1.1}
+.body td:last-child{text-align:right;white-space:nowrap;color:var(--mute)}
+.body tr.g td:first-child{color:var(--gold)}
+.scale{margin-top:10px;display:flex;align-items:center;gap:12px;font-size:13px;color:var(--mute);font-family:var(--sans)}
+.bar{height:6px;border-radius:3px;background:var(--line);flex:1;max-width:260px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--signal);width:0;transition:width 1s cubic-bezier(.2,.7,.2,1)}
+.in .bar i{width:var(--w)}
+.sub-h{font-size:14px;color:var(--mute);margin:44px 0 12px;max-width:44em}
 
-  /* ===========================================================
-     CARD GRID (projects, publications, certs, achievements)
-  =========================================================== */
-  .grid{display:grid; grid-template-columns:1fr; gap:20px;}
-  @media(min-width:640px){.grid-2{grid-template-columns:1fr 1fr;}}
-  @media(min-width:860px){.grid-3{grid-template-columns:repeat(3,1fr);}}
-  .card{
-    background:var(--paper-card); border:1px solid #E3E6EC; border-radius:var(--radius);
-    padding:26px;
-  }
-  .card h3{font-size:21px; margin-bottom:8px; color:var(--ink);}
-  .card p{font-size:14.5px; color:var(--text-body); margin-bottom:14px;}
-  .card .meta{font-size:13px; color:var(--text-dim); font-weight:500;}
-  .card a.link{color:var(--cyan-dim); font-weight:600; font-size:14px;}
+/* cards */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.cards:empty{display:none}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:24px;display:flex;flex-direction:column;gap:8px}
+.card h3{font-size:26px}
+.card p{color:#b9c3bd;font-size:15.5px}
+.card .meta{color:var(--mute);font-size:13.5px}
+.card a.go{margin-top:auto;padding-top:10px;color:var(--signal);text-decoration:none;font-weight:600;font-size:14.5px}
+.card a.go:hover{text-decoration:underline}
+.pill{align-self:flex-start;font-size:12px;font-weight:600;border-radius:999px;padding:3px 10px;margin-top:4px}
+.pill.done{background:rgba(98,224,166,.14);color:var(--signal)}
+.pill.progress{background:rgba(232,196,106,.14);color:var(--gold)}
+.cert-card.clickable{cursor:pointer;transition:background .15s}.cert-card.clickable:hover{background:var(--panel)}
+.cert-view{font-size:13px;color:var(--signal);margin-top:4px}
+.pubs .p{display:block;padding:18px 0;border-top:1px solid var(--line)}
+.pubs .p:last-child{border-bottom:1px solid var(--line)}
+.pubs h3{font-size:24px;max-width:34em}.pubs .meta{color:var(--mute);font-size:14px;margin-top:6px}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
+.g-item{aspect-ratio:4/3;overflow:hidden;border-radius:6px;border:1px solid var(--line);cursor:zoom-in;background:var(--panel)}
+.g-item img{width:100%;height:100%;object-fit:cover;transition:transform .4s}.g-item:hover img{transform:scale(1.04)}
+.edu{border-top:1px solid var(--line)}
+.edu .r{display:grid;grid-template-columns:200px 1fr;gap:24px;padding:20px 0;border-bottom:1px solid var(--line)}
+.edu .r .when{color:var(--mute);font-size:14px;padding-top:4px}
+.edu h3{font-size:28px}.edu p{color:#b9c3bd;font-size:15px;margin-top:4px;max-width:44em}
 
-  .pub-item{
-    border-left:3px solid var(--cyan);
-    padding:4px 0 4px 18px; margin-bottom:22px;
-  }
-  .pub-item:last-child{margin-bottom:0;}
-  .pub-item h3{font-size:18px; margin-bottom:4px;}
-  .pub-item .meta{font-size:13.5px; color:var(--text-dim);}
+/* contact */
+#contact{padding-bottom:48px}
+#contact h2{font-size:clamp(48px,10vw,128px);letter-spacing:-.03em}
+.mail{display:inline-block;margin-top:28px;font-family:var(--serif);font-size:clamp(26px,5vw,52px);text-decoration:none;border-bottom:1px solid var(--signal);word-break:break-all}
+.mail:hover{color:var(--signal)}
+.contact-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+footer{border-top:1px solid var(--line);padding:22px 0 30px;color:var(--mute);font-size:13.5px;position:relative;z-index:1}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
-  .cert-card{transition:border-color .15s, box-shadow .15s, transform .15s;}
-  .cert-card.clickable{cursor:pointer;}
-  .cert-card.clickable:hover{border-color:var(--cyan-dim); box-shadow:0 6px 18px rgba(31,164,146,0.14); transform:translateY(-2px);}
-  .cert-card h3{font-size:17px; margin-bottom:3px;}
-  .cert-card .meta{font-size:13px;}
-  .status-pill{
-    display:inline-block; font-size:11px; font-weight:700; padding:2px 9px;
-    border-radius:20px; margin-top:8px;
-  }
-  .status-progress{background:rgba(47,217,196,0.12); color:var(--cyan-dim);}
-  .status-done{background:rgba(50,180,90,0.12); color:#2E9E52;}
-  .cert-view{
-    display:flex; align-items:center; gap:6px; margin-top:10px;
-    font-size:12.5px; font-weight:600; color:var(--cyan-dim);
-  }
+/* modals */
+.overlay{display:none;position:fixed;inset:0;z-index:999;background:rgba(5,9,7,.9);align-items:center;justify-content:center;padding:20px}
+.overlay.active{display:flex}
+.modal{position:relative;width:100%;max-width:900px;height:88vh;background:var(--panel);border-radius:10px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.modal img,.modal iframe{width:100%;height:100%;border:0;object-fit:contain;background:#fff}
+.modal.imgm img{background:transparent}
+.xbtn{position:absolute;top:10px;right:12px;z-index:2;width:38px;height:38px;border-radius:50%;border:0;background:var(--bone);color:#000;font-size:22px;cursor:pointer}
 
-  /* ===========================================================
-     CERTIFICATE MODAL
-  =========================================================== */
-  .cert-modal-overlay{
-    display:none; position:fixed; inset:0; z-index:999;
-    background:rgba(10,13,20,0.85); align-items:center; justify-content:center; padding:24px;
-  }
-  .cert-modal-overlay.active{display:flex;}
-  .cert-modal-box{
-    position:relative; width:100%; max-width:880px; max-height:88vh;
-    background:var(--paper-card); border-radius:12px; overflow:hidden;
-    display:flex; align-items:center; justify-content:center;
-  }
-  .cert-modal-box img, .cert-modal-box iframe{
-    display:block; width:100%; height:100%; max-height:88vh; border:0; object-fit:contain; background:#0B0E15;
-  }
-  .cert-modal-close{
-    position:absolute; top:10px; right:12px; width:34px; height:34px; border-radius:50%;
-    background:rgba(16,19,28,0.75); color:#fff; border:none; font-size:20px; line-height:1;
-    cursor:pointer; display:flex; align-items:center; justify-content:center; z-index:2;
-  }
-  .cert-modal-close:hover{background:var(--ink);}
+/* reveal */
+.js .rv{opacity:0;transform:translateY(14px);transition:opacity .6s,transform .6s}
+.js .rv.in{opacity:1;transform:none}
 
-  /* ===========================================================
-     GALLERY
-  =========================================================== */
-  .gallery{display:grid; grid-template-columns:repeat(2,1fr); gap:16px;}
-  @media(min-width:640px){.gallery{grid-template-columns:repeat(3,1fr);}}
-  .g-item{
-    aspect-ratio:1/1; border-radius:var(--radius); overflow:hidden;
-    background:var(--paper-card); border:1px dashed #C7CCD8;
-    display:flex; align-items:center; justify-content:center;
-    color:var(--text-dim); font-size:13px; text-align:center; padding:14px;
-  }
-  .g-item img{width:100%; height:100%; object-fit:cover;}
+/* hover and pointer effects (fine pointers only) */
+.btn,.links a,.card,.row,.g-item,.chip,.portrait .frame,.portrait .tag,details.item .what,details.item .tog{transition:transform .25s cubic-bezier(.2,.7,.2,1),border-color .2s,background .2s,color .2s,box-shadow .25s}
+@media (hover:hover) and (pointer:fine){
+  .links a:not(.cta){position:relative}
+  .links a:not(.cta)::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:1px;background:var(--signal);transform:scaleX(0);transform-origin:left;transition:transform .25s}
+  .links a:not(.cta):hover::after{transform:scaleX(1)}
+  .btn:hover{transform:translateY(-2px)}
+  .btn.primary:hover{box-shadow:0 10px 26px rgba(98,224,166,.28)}
+  .card{position:relative;overflow:hidden}
+  .card::before,.board::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .25s;
+    background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),rgba(98,224,166,.13),transparent 70%)}
+  .card:hover::before,.board:hover::before{opacity:1}
+  .board{position:relative}
+  .card:hover{border-color:#3b5a4b;transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,0,0,.35)}
+  .row:hover{background:rgba(98,224,166,.05)}
+  .row:hover .place{transform:translateX(4px)}
+  .place{transition:transform .25s}
+  details.item>summary:hover .tog{border-color:var(--signal);color:var(--signal)}
+  details.item>summary:hover .what{transform:translateX(6px)}
+  .body td{transition:background .15s}.body tr:hover td{background:rgba(255,255,255,.03)}
+  .portrait:hover .frame{transform:rotate(-1.2deg) scale(1.015)}
+  .portrait:hover .tag{transform:rotate(1deg) translateY(-3px)}
+  .chip:hover{background:var(--paper-ink);color:var(--paper);border-color:var(--paper-ink)}
+  .mail{transition:color .2s,letter-spacing .3s}.mail:hover{letter-spacing:.005em}
+  .stat{transition:transform .25s}.stat:hover{transform:translateY(-3px)}
+  .stat:hover .n{color:var(--signal)}
+  .g-item:hover{border-color:var(--signal);transform:translateY(-3px)}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}.card:hover,.btn:hover,.g-item:hover,.stat:hover{transform:none}}
 
-  /* ===========================================================
-     DARK SECTION (Experience wrapper background alt)
-  =========================================================== */
-  .alt{background:var(--paper);}
-  .dark{background:var(--ink); color:#fff;}
-  .dark .section-head h2, .dark h2{color:#fff;}
-  .dark .section-head p{color:#9BA3B7;}
-
-  /* ===========================================================
-     FOOTER
-  =========================================================== */
-  footer{
-    background:var(--ink); color:#8B93A7; padding:44px 0; text-align:center;
-    font-size:14px; border-top:1px solid var(--line);
-  }
-  footer a{color:var(--cyan);}
-
-  /* Editable-note badge shown only in placeholder cards */
-  .editnote{
-    font-size:12px; color:var(--text-dim); font-style:italic; margin-top:6px;
-  }
-
-  /* ===========================================================
-     MOBILE OPTIMIZATION
-  =========================================================== */
-  @media(max-width:640px){
-    .wrap{padding:0 18px;}
-    section{padding:56px 0;}
-    .hero{padding-top:32px;}
-    .hero-inner{gap:24px; padding-bottom:36px;}
-    .section-head h2{font-size:28px;}
-    .btnrow{flex-direction:column; align-items:stretch;}
-    .btn{justify-content:center; text-align:center;}
-    .hero-photo{width:140px; height:168px;}
-    .stat{padding:20px 18px;}
-    .stat .num{font-size:34px;}
-    nav .wrap{height:58px;}
-    .tl-card{padding:20px 18px;}
-    .gallery{grid-template-columns:repeat(2,1fr); gap:10px;}
-  }
-  /* Larger tap targets on touch devices */
-  @media(hover:none){
-    .navlinks a, .navmobile a, .btn{padding-top:12px; padding-bottom:12px;}
-  }
+@media (max-width:820px){
+  .links{display:none}.burger{display:block}
+  .hero-grid{grid-template-columns:1fr}
+  .portrait{justify-self:start;width:min(70%,260px);order:-1}
+  .stats{grid-template-columns:1fr 1fr}
+  .head{grid-template-columns:1fr;gap:8px}
+  .about-grid{grid-template-columns:1fr}
+  details.item>summary{grid-template-columns:1fr auto;gap:6px 14px}
+  details.item .when{grid-column:1;order:-1;padding-top:0}
+  details.item .tog{grid-column:2;grid-row:1 / span 2}
+  .body{padding:0 0 22px 0;max-width:none}
+  .row{grid-template-columns:64px 1fr;padding:14px 16px}.row .prize{grid-column:2;text-align:left}
+  .place{font-size:38px}
+  .edu .r{grid-template-columns:1fr;gap:4px}
+  .modal{height:80vh}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js .rv,.js .row{opacity:1;transform:none;animation:none;transition:none}
+  .bar i{transition:none}.live i{animation:none}
+}
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
-<!-- =========================================================
-     NAVIGATION
-========================================================== -->
-<nav>
+<nav class="top">
   <div class="wrap">
-    <div class="brand" id="navFullName">Mashrafi Tasnim Turja</div>
-    <div class="navlinks">
-      <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#achievements">Achievements</a>
-      <a href="#certifications">Certifications</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#contact">Contact</a>
+    <a class="brand" href="#top" id="navFullName">Mashrafi Tasnim Turja</a>
+    <div class="links">
+      <a href="#about">About</a><a href="#experience">Experience</a><a href="#projects">Projects</a>
+      <a href="#achievements">Achievements</a><a href="#certifications">Certifications</a><a href="#gallery">Gallery</a>
+      <a class="cta" href="#contact">Contact</a>
     </div>
-    <button class="navtoggle" id="navToggle" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+    <button class="burger" id="navToggle" aria-label="Menu" aria-expanded="false">☰</button>
   </div>
-  <div class="navmobile" id="navMobile">
-    <a href="#about">About</a>
-    <a href="#experience">Experience</a>
-    <a href="#projects">Projects</a>
-    <a href="#achievements">Achievements</a>
-    <a href="#certifications">Certifications</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#contact">Contact</a>
+  <div class="mobile" id="navMobile">
+    <a href="#about">About</a><a href="#experience">Experience</a><a href="#projects">Projects</a>
+    <a href="#achievements">Achievements</a><a href="#certifications">Certifications</a><a href="#gallery">Gallery</a><a href="#contact">Contact</a>
   </div>
 </nav>
 
-<!-- =========================================================
-     HERO
-========================================================== -->
-<header class="hero">
+<main id="main">
+<header class="hero" id="top">
   <div class="wrap">
-    <div class="hero-inner">
+    <div class="hero-grid">
       <div>
-        <div class="hero-eyebrow">TEAM MANAGEMENT · TOURNAMENT OPERATIONS · LAN EVENTS · ESPORTS</div>
+        <div class="live"><i></i>Dhaka, Bangladesh · open to esports project roles</div>
         <h1 id="heroName">Mashrafi Tasnim<br/>Turja</h1>
-        <p class="role" id="heroTagline">Esports team manager and tournament operations professional — Team Manager for Inertia Esports, Bangladesh's first team to represent the country regionally, and Project Manager for events of up to 780+ teams.</p>
-        <div class="btnrow">
-          <a class="btn btn-primary" href="#contact">Get in touch</a>
-          <a class="btn btn-ghost" href="#experience">See my work</a>
+        <p class="lede" id="heroTagline">Esports team manager and tournament operations professional — Team Manager for Inertia Esports, Bangladesh's first team to represent the country regionally, and Project Manager for events of up to 780+ teams.</p>
+        <div class="btns">
+          <a class="btn primary" href="#experience">See my record</a>
+          <a class="btn" href="#contact">Get in touch</a>
         </div>
       </div>
-      <!--
-        এই ছবিটা এখন CMS (/admin) থেকে নিয়ন্ত্রিত হয় — data.json এর
-        "heroPhoto" ফিল্ড বদলালেই এখানে ছবি বসে যাবে। ম্যানুয়ালি বদলাতে
-        চাইলে নিচের id="heroPhoto" div টার ভেতরে <img src="images/তোমার_ছবি.jpg">
-        বসিয়ে দাও।
-      -->
-      <div class="hero-photo" id="heroPhoto">
-        <div class="hero-initials">MT</div>
+      <div class="portrait">
+        <div class="frame" id="heroPhoto"><div class="initials">MT</div></div>
+        <div class="tag">Team Manager since 2019</div>
       </div>
     </div>
 
-    <div class="stat-strip" id="statGrid">
-      <div class="stat"><div class="num">6+</div><div class="lbl">Years of Experience</div></div>
-      <div class="stat"><div class="num">5,000+</div><div class="lbl">Teams Managed Across Events</div></div>
-      <div class="stat"><div class="num">4</div><div class="lbl">Esports Teams Managed</div></div>
-      <div class="stat"><div class="num">3</div><div class="lbl">Co-Authored Publications</div></div>
+    <div class="board" aria-label="Best finishes as team manager">
+      <div class="board-head"><span><b>Best finishes</b> as team manager</span><span>Inertia Esports · Wolves Den Esports</span></div>
+      <div class="row gold" style="animation-delay:.15s"><div class="place num">1<sup>st</sup></div><div class="ev">PMBC 2020<span class="sub">Wolves Den Esports · Champion</span></div><div class="prize">BDT 600,000</div></div>
+      <div class="row gold" style="animation-delay:.3s"><div class="place num">1<sup>st</sup></div><div class="ev">Bangladesh Pro Clan Series Season 1<span class="sub">Inertia Esports · Apr 2020</span></div><div class="prize">$766</div></div>
+      <div class="row" style="animation-delay:.45s"><div class="place num">2<sup>nd</sup></div><div class="ev">PUBG Mobile Club Open, Spring Split 2021: Bangladesh<span class="sub">Inertia Esports · Feb 2021</span></div><div class="prize">$2,300</div></div>
+      <div class="row" style="animation-delay:.6s"><div class="place num">2<sup>nd</sup></div><div class="ev">PUBG Mobile Club Open, 2020 Spring Split: South Asia<span class="sub">Inertia Esports · Feb 2020</span></div><div class="prize">$1,600</div></div>
+      <div class="row" style="animation-delay:.75s"><div class="place num">4<sup>th</sup></div><div class="ev">PUBG Mobile Club Open, Fall Split 2020: South Asia<span class="sub">Inertia Esports · Aug 2020</span></div><div class="prize">$1,100</div></div>
+    </div>
+
+    <div class="stats" id="statGrid">
+      <div class="stat"><div class="n num">6+</div><div class="l">Years of Experience</div></div>
+      <div class="stat"><div class="n num">5,000+</div><div class="l">Teams Managed Across Events</div></div>
+      <div class="stat"><div class="n num">4</div><div class="l">Esports Teams Managed</div></div>
+      <div class="stat"><div class="n num">3</div><div class="l">Co-Authored Publications</div></div>
     </div>
   </div>
 </header>
 
-<!-- =========================================================
-     ABOUT
-========================================================== -->
-<section id="about" class="alt">
+<section id="about">
   <div class="wrap">
-    <div class="section-label">ABOUT</div>
+    <div class="head"><div class="k">About</div><h2>Someone who has sat on both sides of the tournament desk</h2></div>
     <div class="about-grid">
-      <div class="about-text">
-        <h2 style="font-size:32px; margin-bottom:18px;">An esports team manager who runs events end to end</h2>
-        <p>Esports professional with 6+ years of experience in team management, tournament operations, and event coordination across Bangladesh's PUBG Mobile ecosystem. I have been Team Manager for four competitive teams since 2019, including Inertia Esports (INES), Bangladesh's first team to represent the country at the regional level in PMCO and PMPL South Asia, and Wolves Den Esports, the PMBC 2020 champion.</p>
-        <p>On the event side, I have been Project Manager for online and LAN tournaments of up to 780+ teams and networking lead for LAN events involving 3,000+ teams. I also hold a B.Sc. in Computer Science and Engineering and co-authored research publications in cybersecurity and machine learning.</p>
-      </div>
       <div>
-        <div class="skill-block">
-          <h4>Project &amp; Operations</h4>
-          <div class="chips">
-            <span class="chip">Project Planning &amp; Execution</span>
-            <span class="chip">Operations Management</span>
-            <span class="chip">Event Management</span>
-            <span class="chip">Stakeholder Coordination</span>
-            <span class="chip">Team Leadership</span>
-            <span class="chip">Risk Management</span>
-          </div>
-        </div>
-        <div class="skill-block">
-          <h4>Technical</h4>
-          <div class="chips">
-            <span class="chip">Python</span>
-            <span class="chip">JavaScript</span>
-            <span class="chip">HTML/CSS</span>
-            <span class="chip">Node.js</span>
-            <span class="chip">Google Apps Script</span>
-            <span class="chip">GitHub</span>
-            <span class="chip">Linux</span>
-          </div>
-        </div>
-        <div class="skill-block">
-          <h4>Tools &amp; Design</h4>
-          <div class="chips">
-            <span class="chip">Google Colab</span>
-            <span class="chip">Microsoft Office</span>
-            <span class="chip">OBS</span>
-            <span class="chip">Adobe Illustrator</span>
-            <span class="chip">Adobe Photoshop</span>
-          </div>
-        </div>
+        <p>I have spent six years inside Bangladesh's PUBG Mobile scene. As a team manager I looked after rosters, schedules and tournament requirements. As a project manager I planned the events those rosters played in.</p>
+        <p>I have managed four teams since 2019. Inertia Esports (INES) was Bangladesh's first team to represent the country at the regional level in PMCO and PMPL South Asia, and Wolves Den Esports won PMBC 2020.</p>
+        <p>On the event side I have run online and LAN tournaments of up to 780+ teams and led networking for LAN events involving 3,000+ teams. I also hold a B.Sc. in Computer Science and Engineering.</p>
+      </div>
+      <div class="skills">
+        <div class="grp"><h4>Esports operations</h4><div class="chips"><span class="chip">Team &amp; player management</span><span class="chip">Tournament operations</span><span class="chip">LAN event operations</span><span class="chip">Networking &amp; connectivity</span><span class="chip">Sponsored device distribution</span></div></div>
+        <div class="grp"><h4>Project delivery</h4><div class="chips"><span class="chip">Project planning &amp; execution</span><span class="chip">Stakeholder coordination</span><span class="chip">Task delegation</span><span class="chip">Risk &amp; problem-solving</span><span class="chip">Post-project reporting</span></div></div>
+        <div class="grp"><h4>Tools</h4><div class="chips"><span class="chip">Python</span><span class="chip">JavaScript</span><span class="chip">Node.js</span><span class="chip">Google Apps Script</span><span class="chip">GitHub</span><span class="chip">Linux</span><span class="chip">OBS</span><span class="chip">Microsoft Office</span><span class="chip">Adobe Illustrator</span><span class="chip">Photoshop</span></div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- =========================================================
-     EXPERIENCE TIMELINE
-========================================================== -->
 <section id="experience">
   <div class="wrap">
-    <div class="section-head">
-      <div class="section-label">EXPERIENCE</div>
-      <h2>Where I've delivered</h2>
-      <p>Team management and freelance tournament leadership across Bangladesh's PUBG Mobile esports ecosystem.</p>
+    <div class="head"><div class="k">Experience</div><div><h2>Teams I managed, events I ran</h2><p>Tap a row to open the details.</p></div></div>
+
+    <div class="team rv">
+      <details class="item" open>
+        <summary><div class="when num">Jan 2020 – Aug 2022<br>Sep 2025 – Jan 2026</div><div class="what">Team Manager<span class="org">Inertia Esports (INES)</span></div><div class="tog">+</div></summary>
+        <div class="body">
+          <p>Managed team operations and player coordination across two tenures for Bangladesh's first team to represent Bangladesh at the regional level.</p>
+          <p>Supported participation in PMCO South Asia and PMPL South Asia Seasons 1–3, handling tournament requirements and communication.</p>
+          <table>
+            <tr><td class="num">20th</td><td>PUBG Mobile Pro League South Asia Season 3 <small>(A-Tier)</small></td><td>Apr 2021 · $2,500</td></tr>
+            <tr><td class="num">2nd</td><td>PUBG Mobile Club Open Spring Split 2021: Bangladesh <small>(B-Tier)</small></td><td>Feb 2021 · $2,300</td></tr>
+            <tr><td class="num">18th</td><td>PUBG Mobile Pro League South Asia Season 2 <small>(A-Tier)</small></td><td>Nov 2020 · $1,250</td></tr>
+            <tr><td class="num">6th</td><td>PUBG Mobile Bangladesh Challenge 2020 <small>(B-Tier)</small></td><td>Sep 2020 · $1,179</td></tr>
+            <tr><td class="num">4th</td><td>PUBG Mobile Club Open Fall Split 2020: South Asia <small>(B-Tier)</small></td><td>Aug 2020 · $1,100</td></tr>
+            <tr><td class="num">19th</td><td>PUBG Mobile Pro League South Asia Season 1 <small>(A-Tier)</small></td><td>Jun 2020 · $1,000</td></tr>
+            <tr><td class="num">7th</td><td>Gamers Without Borders 2020: Asia <small>(A-Tier)</small></td><td>May 2020 · $2,000</td></tr>
+            <tr class="g"><td class="num">1st</td><td>Bangladesh Pro Clan Series Season 1 <small>(C-Tier)</small></td><td>Apr 2020 · $766</td></tr>
+            <tr><td class="num">2nd</td><td>PUBG Mobile Club Open 2020 Spring Split: South Asia <small>(B-Tier)</small></td><td>Feb 2020 · $1,600</td></tr>
+          </table>
+        </div>
+      </details>
+      <details class="item">
+        <summary><div class="when num">2019 – 2020</div><div class="what">Team Manager<span class="badge">PMBC 2020 champion</span><span class="org">Wolves Den Esports</span></div><div class="tog">+</div></summary>
+        <div class="body"><p>Managed team operations and supported players during competitive activities, coordinating team communication and tournament requirements.</p><p>Won PMBC 2020: 1st place and a BDT 600,000 prize.</p></div>
+      </details>
+      <details class="item">
+        <summary><div class="when num">May 2024 – Jan 2025</div><div class="what">Team Manager<span class="org">Gremlin Storm</span></div><div class="tog">+</div></summary>
+        <div class="body"><p>Managed team operations and player coordination throughout the competitive period, supporting tournament participation and team communication.</p></div>
+      </details>
+      <details class="item">
+        <summary><div class="when num">Jan 2021 – Mar 2021</div><div class="what">Team Manager<span class="org">Predator Xtreme Esports</span></div><div class="tog">+</div></summary>
+        <div class="body"><p>Managed team operations and coordinated player activities, supporting tournament participation and team requirements.</p></div>
+      </details>
     </div>
 
-    <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-card">
-          <div class="tl-top">
-            <h3>Team Manager</h3>
-            <div class="tl-date">Jan 2020 — Aug 2022 · Sep 2025 — Jan 2026</div>
-          </div>
-          <div class="tl-org">Inertia Esports (INES)</div>
-          <ul>
-            <li>Managed team operations and player coordination across two tenures for Bangladesh's first team to represent Bangladesh at the regional level.</li>
-            <li>Supported participation in PMCO South Asia and PMPL South Asia Seasons 1–3, handling tournament requirements and communication.</li>
-            <li><strong>Results:</strong><br/>20th — PUBG Mobile Pro League South Asia Season 3 (A-Tier), Apr 2021, $2,500<br/>2nd — PUBG Mobile Club Open Spring Split 2021: Bangladesh (B-Tier), Feb 2021, $2,300<br/>18th — PUBG Mobile Pro League South Asia Season 2 (A-Tier), Nov 2020, $1,250<br/>6th — PUBG Mobile Bangladesh Challenge 2020 (B-Tier), Sep 2020, $1,179<br/>4th — PUBG Mobile Club Open Fall Split 2020: South Asia (B-Tier), Aug 2020, $1,100<br/>19th — PUBG Mobile Pro League South Asia Season 1 (A-Tier), Jun 2020, $1,000<br/>7th — Gamers Without Borders 2020: Asia (A-Tier), May 2020, $2,000<br/>1st — Bangladesh Pro Clan Series Season 1 (C-Tier), Apr 2020, $766<br/>2nd — PUBG Mobile Club Open 2020 Spring Split: South Asia (B-Tier), Feb 2020, $1,600</li>
-          </ul>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-card">
-          <div class="tl-top">
-            <h3>Team Manager</h3>
-            <div class="tl-date">2019 — 2020</div>
-          </div>
-          <div class="tl-org">Wolves Den Esports</div>
-          <ul>
-            <li>Managed team operations and supported players during competitive activities, coordinating team communication and tournament requirements.</li>
-            <li><strong>PMBC 2020 Champion</strong> — 1st place, BDT 600,000 prize.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-card">
-          <div class="tl-top">
-            <h3>Team Manager</h3>
-            <div class="tl-date">May 2024 — Jan 2025</div>
-          </div>
-          <div class="tl-org">Gremlin Storm</div>
-          <ul>
-            <li>Managed team operations and player coordination throughout the competitive period, supporting tournament participation and team communication.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-card">
-          <div class="tl-top">
-            <h3>Team Manager</h3>
-            <div class="tl-date">Jan 2021 — Mar 2021</div>
-          </div>
-          <div class="tl-org">Predator Xtreme Esports</div>
-          <ul>
-            <li>Managed team operations and coordinated player activities, supporting tournament participation and team requirements.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-card">
-          <div class="tl-top">
-            <h3>Network Engineer — Networking &amp; Connectivity <span class="tag">Freelance</span></h3>
-            <div class="tl-date">2026</div>
-          </div>
-          <div class="tl-org">Goat Esports — PMCC &amp; PMNC Fall LAN Events</div>
-          <ul>
-            <li>Managed networking, connectivity, and device-distribution operations for two LAN events totaling 3,500+ teams.</li>
-            <li>Achieved zero connectivity issues at a 500+ team event, resolved live issues quickly, and managed distribution of sponsored mobile devices.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-card">
-          <div class="tl-top">
-            <h3>Production Support (In-Venue) <span class="tag">Freelance</span></h3>
-            <div class="tl-date">Jan 2026</div>
-          </div>
-          <div class="tl-org">KH Legacy Cup Bangladesh Season 1</div>
-          <ul>
-            <li>Worked in production support on site at the event venue, helping keep match-day operations running smoothly.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-card">
-          <div class="tl-top">
-            <h3>Project Manager &amp; In Charge <span class="tag">Freelance</span></h3>
-            <div class="tl-date">2025</div>
-          </div>
-          <div class="tl-org">PUBG Mobile NBL Summer Clash — The Hyperion Quest</div>
-          <ul>
-            <li>Planned and coordinated the overall event, assigned responsibilities, and solved operational challenges during execution.</li>
-            <li>Delivered an online tournament of approximately 780+ teams through to completion.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-card">
-          <div class="tl-top">
-            <h3>Project Manager &amp; In Charge <span class="tag">Freelance</span></h3>
-            <div class="tl-date">2025</div>
-          </div>
-          <div class="tl-org">PUBG Mobile Zenos National Challenge 2025 (LAN)</div>
-          <ul>
-            <li>Planned and coordinated event operations from preparation through execution and resolved operational challenges on site.</li>
-            <li>Completed the LAN event with approximately 128 teams.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-card">
-          <div class="tl-top">
-            <h3>Advisor <span class="tag">Freelance</span></h3>
-            <div class="tl-date">2025</div>
-          </div>
-          <div class="tl-org">OPPO Esports Club Presents: The Ultimate PUBG Mobile LAN Event</div>
-          <ul>
-            <li>Provided operational guidance and feedback to project personnel and stakeholders, identified potential challenges, and proposed solutions.</li>
-            <li>Supported execution of a LAN event with 560+ teams, including the rollout of sponsored mobile devices.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-card">
-          <div class="tl-top">
-            <h3>Project Manager <span class="tag">Freelance</span></h3>
-            <div class="tl-date">International</div>
-          </div>
-          <div class="tl-org">Zenos Invitational Series (Online)</div>
-          <ul>
-            <li>Planned the event, assigned responsibilities, and coordinated with participating international teams to complete an event with 19 teams.</li>
-          </ul>
-        </div>
-      </div>
+    <div class="sub-h">Events, freelance. The bar shows how many teams took part, on a log scale so a 19-team event is still visible next to a 3,500-team one.</div>
+    <div class="team rv" id="events">
+      <details class="item">
+        <summary><div class="when num">2026</div><div class="what">Network Engineer<span class="org">Goat Esports · PMCC &amp; PMNC Fall LAN events</span><div class="scale"><div class="bar"><i style="--w:100%"></i></div><span class="num">3,500+ teams</span></div></div><div class="tog">+</div></summary>
+        <div class="body"><p>Managed networking, connectivity and device-distribution operations for two LAN events totaling 3,500+ teams.</p><p>Achieved zero connectivity issues at a 500+ team event, resolved live issues quickly, and managed distribution of sponsored mobile devices.</p></div>
+      </details>
+      <details class="item">
+        <summary><div class="when num">Jan 2026</div><div class="what">Production Support, in venue<span class="org">KH Legacy Cup Bangladesh Season 1</span></div><div class="tog">+</div></summary>
+        <div class="body"><p>Worked in production support on site at the event venue, helping keep match-day operations running smoothly.</p></div>
+      </details>
+      <details class="item">
+        <summary><div class="when num">2025</div><div class="what">Project Manager &amp; In Charge<span class="org">PUBG Mobile NBL Summer Clash: The Hyperion Quest</span><div class="scale"><div class="bar"><i style="--w:81.5%"></i></div><span class="num">780+ teams, online</span></div></div><div class="tog">+</div></summary>
+        <div class="body"><p>Planned and coordinated the overall event, assigned responsibilities, and solved operational challenges during execution.</p><p>Delivered an online tournament of approximately 780+ teams through to completion.</p></div>
+      </details>
+      <details class="item">
+        <summary><div class="when num">2025</div><div class="what">Advisor<span class="org">OPPO Esports Club Presents: The Ultimate PUBG Mobile LAN Event</span><div class="scale"><div class="bar"><i style="--w:77.4%"></i></div><span class="num">560+ teams, LAN</span></div></div><div class="tog">+</div></summary>
+        <div class="body"><p>Provided operational guidance and feedback to project personnel and stakeholders, identified potential challenges, and proposed solutions.</p><p>Supported execution of a LAN event with 560+ teams, including the rollout of sponsored mobile devices.</p></div>
+      </details>
+      <details class="item">
+        <summary><div class="when num">2025</div><div class="what">Project Manager &amp; In Charge<span class="org">PUBG Mobile Zenos National Challenge 2025</span><div class="scale"><div class="bar"><i style="--w:59.9%"></i></div><span class="num">128 teams, LAN</span></div></div><div class="tog">+</div></summary>
+        <div class="body"><p>Planned and coordinated event operations from preparation through execution, and resolved operational challenges on site.</p><p>Completed the LAN event with approximately 128 teams.</p></div>
+      </details>
+      <details class="item">
+        <summary><div class="when num">International</div><div class="what">Project Manager<span class="org">Zenos Invitational Series, online</span><div class="scale"><div class="bar"><i style="--w:36.1%"></i></div><span class="num">19 teams</span></div></div><div class="tog">+</div></summary>
+        <div class="body"><p>Planned the event, assigned responsibilities, and coordinated with participating international teams to complete an event with 19 teams.</p></div>
+      </details>
     </div>
   </div>
 </section>
 
-<!-- =========================================================
-     PROJECTS
-========================================================== -->
-<section id="projects" class="alt">
+<section id="projects">
   <div class="wrap">
-    <div class="section-head">
-      <div class="section-label">PROJECTS</div>
-      <h2>Things I've built</h2>
-      <p>Technical projects where I served as both project manager and developer.</p>
+    <div class="head"><div class="k">Projects</div><div><h2>Software I planned and built</h2><p>Where tournament pain points met code.</p></div></div>
+    <div class="cards rv">
+      <div class="card"><h3>Esports Management System</h3><p>A web platform for tournament creation, team management, fixtures and results. It cuts manual operations work through automation.</p><div class="meta">JavaScript · Google Apps Script</div><a class="go" href="https://www.esports-bd.site" target="_blank" rel="noopener">esports-bd.site ↗</a></div>
+      <div class="card"><h3>Invoice Hub Beta</h3><p>An invoicing platform for freelancers and small businesses, with link-based sharing for fast client communication.</p><div class="meta">Node.js · Vercel · Neon</div><a class="go" href="https://invoicehub-beta.vercel.app" target="_blank" rel="noopener">invoicehub-beta.vercel.app ↗</a></div>
     </div>
-    <div class="grid grid-2">
-      <div class="card">
-        <h3>Esports Management System</h3>
-        <p>A web-based platform for tournament creation, team management, fixtures, and results — built to reduce manual operational work through automation.</p>
-        <div class="meta">JavaScript · Google Apps Script API</div>
-        <br/>
-        <a class="link" href="https://www.esports-bd.site" target="_blank" rel="noopener">esports-bd.site →</a>
-      </div>
-      <div class="card">
-        <h3>Invoice Hub Beta</h3>
-        <p>A web-based invoicing platform for freelancers and small businesses, with link-based invoice sharing for fast client communication.</p>
-        <div class="meta">Node.js · Vercel · Neon</div>
-        <br/>
-        <a class="link" href="https://invoicehub-beta.vercel.app" target="_blank" rel="noopener">invoicehub-beta.vercel.app →</a>
-      </div>
+
+    <div class="sub-h" style="margin-top:64px">Research, three co-authored papers</div>
+    <div class="pubs rv">
+      <div class="p"><h3>Forensic Analysis of Anti-Forensic Techniques in Modern Operating Systems</h3><div class="meta">ICIPCN 2026, Nepal · DOI 10.1109/ICIPCN67432.2026.11438785</div></div>
+      <div class="p"><h3>A Comparative Machine Learning Approach for Multi-Class Cyber Attack Classification</h3><div class="meta">IEEE QPAIN 2026 · DOI 10.1109/QPAIN69676.2026.11546059</div></div>
+      <div class="p"><h3>Identifying Malicious and Benign Prompts in AI Agent Evasion Attacks Using Machine Learning</h3><div class="meta">IEEE QPAIN 2026 · DOI 10.1109/QPAIN69676.2026.11546222</div></div>
     </div>
+    <div class="cards" id="researchCertGrid" style="margin-top:24px"></div>
   </div>
 </section>
 
-<!-- =========================================================
-     RESEARCH & PUBLICATIONS
-========================================================== -->
-<section id="research">
+<section id="achievements">
   <div class="wrap">
-    <div class="section-head">
-      <div class="section-label">RESEARCH &amp; PUBLICATIONS</div>
-      <h2>Published work</h2>
-    </div>
-    <div class="pub-item">
-      <h3>Forensic Analysis of Anti-Forensic Techniques in Modern Operating Systems</h3>
-      <div class="meta">Co-Author · ICIPCN 2026, Nepal · DOI: 10.1109/ICIPCN67432.2026.11438785</div>
-    </div>
-    <div class="pub-item">
-      <h3>A Comparative Machine Learning Approach for Multi-Class Cyber Attack Classification</h3>
-      <div class="meta">Co-Author · IEEE QPAIN 2026 · DOI: 10.1109/QPAIN69676.2026.11546059</div>
-    </div>
-    <div class="pub-item">
-      <h3>Identifying Malicious and Benign Prompts in AI Agent Evasion Attacks Using Machine Learning</h3>
-      <div class="meta">Co-Author · IEEE QPAIN 2026 · DOI: 10.1109/QPAIN69676.2026.11546222</div>
-    </div>
-
-    <!-- এই অংশ এখন /admin CMS থেকে নিয়ন্ত্রিত — data.json এর "researchCertifications" -->
-    <div class="grid grid-2" id="researchCertGrid" style="margin-top:24px;"></div>
+    <div class="head"><div class="k">Beyond the job title</div><div><h2>Sport, design and creative work</h2></div></div>
+    <div class="cards rv" id="achievementGrid"></div>
   </div>
 </section>
 
-<!-- =========================================================
-     ACHIEVEMENTS & EXTRACURRICULAR
-     ======= কিভাবে নতুন Achievement/Activity যোগ করবে =======
-     নিচে <div class="grid grid-3"> এর ভেতরে যেকোনো একটা .card ব্লক
-     কপি করে পেস্ট করো, তারপর টাইটেল, ডেসক্রিপশন আর তারিখ বদলে দাও।
-     প্যাটার্নটা এরকম:
-
-     <div class="card">
-       <h3>তোমার অ্যাচিভমেন্টের নাম</h3>
-       <p>এক-দুই লাইনে বর্ণনা লেখো।</p>
-       <div class="meta">তারিখ / সাল</div>
-     </div>
-========================================================== -->
-<section id="achievements" class="alt">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="section-label">ACHIEVEMENTS &amp; EXTRACURRICULAR</div>
-      <h2>Beyond the job title</h2>
-      <p>Additional roles, creative work, and competitive background.</p>
-    </div>
-    <!-- এই অংশ এখন /admin CMS থেকে নিয়ন্ত্রিত — data.json এর "achievements" -->
-    <div class="grid grid-3" id="achievementGrid"></div>
-  </div>
-</section>
-
-<!-- =========================================================
-     CERTIFICATIONS
-     ======= কিভাবে নতুন Certification যোগ করবে =======
-     নিচে যেকোনো একটা .cert-card ব্লক কপি করো এবং:
-     - cert-icon এর ভেতরের অক্ষর বদলাও (২ অক্ষরের শর্টফর্ম)
-     - h3 এ সার্টিফিকেটের নাম দাও
-     - .meta তে প্রতিষ্ঠানের নাম দাও
-     - status-pill এ "status-done" (সম্পন্ন) বা "status-progress" (চলমান) ব্যবহার করো
-========================================================== -->
 <section id="certifications">
   <div class="wrap">
-    <div class="section-head">
-      <div class="section-label">CERTIFICATIONS &amp; TRAINING</div>
-      <h2>Continued learning</h2>
-    </div>
-    <!-- এই অংশ এখন /admin CMS থেকে নিয়ন্ত্রিত — data.json এর "certifications" -->
-    <div class="grid grid-2" id="certGrid"></div>
+    <div class="head"><div class="k">Learning</div><div><h2>Certifications and training</h2></div></div>
+    <div class="cards rv" id="certGrid"></div>
   </div>
 </section>
 
-<!-- =========================================================
-     GALLERY
-     ======= কিভাবে ছবি যোগ করবে =======
-     ১) তোমার ছবিগুলো (jpg/png) এই index.html ফাইলের সাথে একই ফোল্ডারে
-        রাখো, অথবা একটা "images" নামে ফোল্ডার বানিয়ে তার ভেতরে রাখো।
-     ২) নিচের প্রতিটা <div class="g-item">...</div> কে বদলে দাও এভাবে:
-        <div class="g-item"><img src="images/photo1.jpg" alt="বর্ণনা"></div>
-     ৩) আরও ছবি যোগ করতে চাইলে পুরো <div class="g-item">...</div> ব্লক
-        কপি করে নিচে পেস্ট করো এবং নতুন ছবির নাম বসাও।
-========================================================== -->
-<section id="gallery" class="alt">
+<section id="gallery">
   <div class="wrap">
-    <div class="section-head">
-      <div class="section-label">GALLERY</div>
-      <h2>Moments from the field</h2>
-      <p>LAN events, tournaments, and team moments — add your photos below.</p>
-    </div>
-    <!-- এই অংশ এখন /admin CMS থেকে নিয়ন্ত্রিত — data.json এর "gallery" -->
-    <div class="gallery" id="galleryGrid"></div>
+    <div class="head"><div class="k">Gallery</div><div><h2>From the venue floor</h2><p>LAN events, tournaments and team moments.</p></div></div>
+    <div class="gallery rv" id="galleryGrid"></div>
   </div>
 </section>
 
-<!-- =========================================================
-     EDUCATION
-========================================================== -->
 <section id="education">
   <div class="wrap">
-    <div class="section-head">
-      <div class="section-label">EDUCATION</div>
-      <h2>Academic background</h2>
-    </div>
-    <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-card">
-          <div class="tl-top">
-            <h3>B.Sc. in Computer Science and Engineering</h3>
-            <div class="tl-date">2022 — 2026</div>
-          </div>
-          <div class="tl-org">Daffodil International University · CGPA 3.32/4.00</div>
-          <p style="font-size:15px;">Thesis: RTSnet26 — A Custom Convolutional Neural Network with Integrated Explainable AI for Multi-Class Classification of Six Ocular Diseases from Color Fundus Images.</p>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-card">
-          <div class="tl-top">
-            <h3>Higher Secondary Certificate (HSC)</h3>
-            <div class="tl-date">2019 — 2020</div>
-          </div>
-          <div class="tl-org">Ananda Mohan College · GPA 5.00/5.00</div>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div class="tl-card">
-          <div class="tl-top">
-            <h3>Secondary School Certificate (SSC)</h3>
-            <div class="tl-date">2017 — 2018</div>
-          </div>
-          <div class="tl-org">Mymensingh Zilla School · GPA 5.00/5.00</div>
-        </div>
-      </div>
+    <div class="head"><div class="k">Education</div><div><h2>Academic background</h2></div></div>
+    <div class="edu rv">
+      <div class="r"><div class="when num">2022 – 2026</div><div><h3>B.Sc. in Computer Science and Engineering</h3><p>Daffodil International University · CGPA 3.32 / 4.00</p><p>Thesis: RTSnet26, a custom convolutional neural network with integrated explainable AI for multi-class classification of six ocular diseases from colour fundus images.</p></div></div>
+      <div class="r"><div class="when num">2019 – 2020</div><div><h3>Higher Secondary Certificate</h3><p>Ananda Mohan College · GPA 5.00 / 5.00</p></div></div>
+      <div class="r"><div class="when num">2017 – 2018</div><div><h3>Secondary School Certificate</h3><p>Mymensingh Zilla School · GPA 5.00 / 5.00</p></div></div>
     </div>
   </div>
 </section>
 
-<!-- =========================================================
-     CONTACT
-========================================================== -->
-<section id="contact" class="dark">
+<section id="contact">
   <div class="wrap">
-    <div class="section-label">CONTACT</div>
-    <h2 style="font-size:40px; margin-bottom:16px;">Let's work together</h2>
-    <p style="color:#9BA3B7; max-width:520px; margin-bottom:30px; font-size:16px;">Open to project management, operations, and esports opportunities. Reach out directly below.</p>
-    <div class="btnrow">
-      <a class="btn btn-primary" href="mailto:mashturja4816@gmail.com">mashturja4816@gmail.com</a>
-      <a class="btn btn-ghost" href="https://linkedin.com/in/mashrafi-tasnim-turja/" target="_blank" rel="noopener">LinkedIn Profile</a>
-      <a class="btn btn-ghost" href="tel:+8801842609370">+880 1842 609370</a>
+    <h2>Let's talk.</h2>
+    <p style="color:var(--mute);max-width:32em;margin-top:18px">I'm looking for an Assistant Esports Project Manager role. Send me a message about your event, team or tournament.</p>
+    <a class="mail" href="mailto:mashturja4816@gmail.com">mashturja4816@gmail.com</a>
+    <div class="contact-row">
+      <a class="btn" href="https://linkedin.com/in/mashrafi-tasnim-turja/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="tel:+8801842609370">+880 1842 609370</a>
     </div>
   </div>
 </section>
+</main>
 
-<footer>
-  <div class="wrap">
-    © 2026 Mashrafi Tasnim Turja · Dhaka, Bangladesh
-  </div>
-</footer>
+<footer><div class="wrap"><span>© 2026 Mashrafi Tasnim Turja</span><span>Dhaka · <span id="clock" class="num"></span></span></div></footer>
 
-<!-- Certificate viewer (opens when a certification card with an uploaded certificate is clicked) -->
-<div class="cert-modal-overlay" id="certModalOverlay">
-  <div class="cert-modal-box">
-    <button class="cert-modal-close" id="certModalClose" aria-label="Close">&times;</button>
-    <div id="certModalContent" style="width:100%;height:100%;"></div>
-  </div>
-</div>
+<div class="overlay" id="certModalOverlay"><div class="modal" id="certModalBox"><button class="xbtn" id="certModalClose" aria-label="Close">&times;</button><div id="certModalContent" style="width:100%;height:100%"></div></div></div>
 
 <script>
-/* =============================================================
-   PORTFOLIO DATA LOADER
-   এই স্ক্রিপ্ট data.json থেকে কনটেন্ট পড়ে পেজে বসায়।
-   /admin (Sveltia CMS) থেকে data.json বদলালে এখানে অটোমেটিক প্রতিফলিত হবে।
-   লোকাল ফাইল হিসেবে সরাসরি খুললে (file://) ব্রাউজার fetch ব্লক করতে
-   পারে — তখন নিচের DEFAULT_DATA ফলব্যাক হিসেবে দেখানো হয়।
-============================================================= */
+document.documentElement.classList.add('js');
 const DEFAULT_DATA = {
-  fullName: "Mashrafi Tasnim Turja",
-  heroNameLine1: "Mashrafi Tasnim",
-  heroNameLine2: "Turja",
-  tagline: "Esports team manager and tournament operations professional — Team Manager for Inertia Esports, Bangladesh's first team to represent the country regionally, and Project Manager for events of up to 780+ teams.",
-  heroPhoto: "",
-  stats: [
-    { num: "6+", label: "Years of Experience" },
-    { num: "5,000+", label: "Teams Managed Across Events" },
-    { num: "4", label: "Esports Teams Managed" },
-    { num: "3", label: "Co-Authored Publications" }
-  ],
-  certifications: [
-    { title: "The What and How of Esports Management", org: "HP · edX", status: "progress" },
-    { title: "Social Skills Training Programme", org: "Daffodil International University", status: "done" }
-  ],
-  researchCertifications: [],
-  achievements: [
-    { title: "Professional Handball Player", description: "Represented Mymensingh District Sports Association in professional-level handball competitions, building teamwork, discipline, and performance management skills.", date: "2016 — 2023" },
-    { title: "Creative Team Manager, CDSTF", description: "Managed and coordinated creative team activities for the Community Digital Storytelling Festival, supporting project planning and execution.", date: "May 2024 — Dec 2024" },
-    { title: "Graphic Designer, Draco Design", description: "Created graphic design materials and developed visual concepts for a sportswear brand using Adobe Illustrator and Photoshop.", date: "Oct 2024 — Aug 2025" }
-  ],
-  gallery: []
+  fullName:"Mashrafi Tasnim Turja",heroNameLine1:"Mashrafi Tasnim",heroNameLine2:"Turja",
+  tagline:"Esports team manager and tournament operations professional — Team Manager for Inertia Esports, Bangladesh's first team to represent the country regionally, and Project Manager for events of up to 780+ teams.",
+  heroPhoto:"",
+  stats:[{num:"6+",label:"Years of Experience"},{num:"5,000+",label:"Teams Managed Across Events"},{num:"4",label:"Esports Teams Managed"},{num:"3",label:"Co-Authored Publications"}],
+  certifications:[{title:"The What and How of Esports Management",org:"HP · edX",status:"progress"},{title:"Social Skills Training Programme",org:"Daffodil International University",status:"done"}],
+  researchCertifications:[],achievements:[],gallery:[]
 };
-
-function escapeHtml(str){
-  const d = document.createElement('div');
-  d.textContent = str == null ? "" : str;
-  return d.innerHTML;
+function esc(s){const d=document.createElement('div');d.textContent=s==null?"":s;return d.innerHTML}
+function certCard(c){
+  const has=!!(c.certificate&&String(c.certificate).trim());
+  return `<div class="card cert-card${has?' clickable':''}"${has?` data-cert="${esc(c.certificate)}" role="button" tabindex="0"`:''}>
+    <h3>${esc(c.title)}</h3><div class="meta">${esc(c.org||"")}</div>
+    <span class="pill ${c.status==='done'?'done':'progress'}">${c.status==='done'?'Completed':'In progress'}</span>
+    ${has?'<div class="cert-view">View certificate</div>':''}</div>`;
 }
-
-// Shared card markup for Certifications + Research Certifications.
-// No short-code/icon anymore. Card only becomes clickable when a
-// certificate file has been uploaded in /admin — otherwise it's a
-// plain, non-clickable card.
-function renderCertCard(c){
-  const hasCert = !!(c.certificate && String(c.certificate).trim());
-  return `
-    <div class="card cert-card${hasCert ? ' clickable' : ''}"${hasCert ? ` data-cert="${escapeHtml(c.certificate)}" role="button" tabindex="0"` : ''}>
-      <h3>${escapeHtml(c.title)}</h3>
-      <div class="meta">${escapeHtml(c.org || "")}</div>
-      <span class="status-pill ${c.status === 'done' ? 'status-done' : 'status-progress'}">${c.status === 'done' ? 'Completed' : 'In Progress'}</span>
-      ${hasCert ? '<div class="cert-view">📄 সার্টিফিকেট দেখতে ক্লিক করো</div>' : ''}
-    </div>
-  `;
-}
-
-function bindCertClicks(container){
-  container.querySelectorAll('.cert-card[data-cert]').forEach(el => {
-    el.addEventListener('click', () => openCertModal(el.getAttribute('data-cert')));
-    el.addEventListener('keydown', (e) => {
-      if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openCertModal(el.getAttribute('data-cert')); }
-    });
+function bindCerts(box){
+  box.querySelectorAll('.cert-card[data-cert]').forEach(el=>{
+    const open=()=>openModal(el.getAttribute('data-cert'));
+    el.addEventListener('click',open);
+    el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}});
   });
 }
+function openModal(url){
+  if(!url)return;
+  const ov=document.getElementById('certModalOverlay'),ct=document.getElementById('certModalContent'),bx=document.getElementById('certModalBox');
+  const pdf=/\.pdf(\?|#|$)/i.test(url);
+  bx.classList.toggle('imgm',!pdf);
+  ct.innerHTML=pdf?`<iframe src="${esc(url)}" title="Certificate"></iframe>`:`<img src="${esc(url)}" alt="">`;
+  ov.classList.add('active');
+}
+function closeModal(){document.getElementById('certModalOverlay').classList.remove('active');document.getElementById('certModalContent').innerHTML=''}
+document.getElementById('certModalClose').addEventListener('click',closeModal);
+document.getElementById('certModalOverlay').addEventListener('click',e=>{if(e.target.id==='certModalOverlay')closeModal()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
 
-function openCertModal(url){
-  if(!url) return;
-  const overlay = document.getElementById('certModalOverlay');
-  const content = document.getElementById('certModalContent');
-  if(!overlay || !content) return;
-  const isPdf = /\.pdf(\?|#|$)/i.test(url);
-  content.innerHTML = isPdf
-    ? `<iframe src="${escapeHtml(url)}"></iframe>`
-    : `<img src="${escapeHtml(url)}" alt="Certificate">`;
-  overlay.classList.add('active');
+function render(d){
+  document.title=d.fullName+" — Portfolio";
+  const nn=document.getElementById('navFullName');if(nn)nn.textContent=d.fullName;
+  const hn=document.getElementById('heroName');
+  if(hn){const l1=d.heroNameLine1||d.fullName,l2=d.heroNameLine2||"";hn.innerHTML=esc(l1)+(l2?"<br/>"+esc(l2):"")}
+  const tg=document.getElementById('heroTagline');if(tg&&d.tagline)tg.textContent=d.tagline;
+  const ph=document.getElementById('heroPhoto');
+  if(ph&&d.heroPhoto){ph.innerHTML=`<img src="${esc(d.heroPhoto)}" alt="${esc(d.fullName)}">`}
+  const sg=document.getElementById('statGrid');
+  if(sg&&d.stats&&d.stats.length)sg.innerHTML=d.stats.map(s=>`<div class="stat"><div class="n num">${esc(s.num)}</div><div class="l">${esc(s.label)}</div></div>`).join('');
+  const cg=document.getElementById('certGrid'),cs=document.getElementById('certifications');
+  if(cg){const l=d.certifications||[];cs.style.display=l.length?"":"none";cg.innerHTML=l.map(certCard).join('');bindCerts(cg)}
+  const rg=document.getElementById('researchCertGrid');
+  if(rg){const l=d.researchCertifications||[];rg.innerHTML=l.map(certCard).join('');bindCerts(rg)}
+  const ag=document.getElementById('achievementGrid'),as=document.getElementById('achievements');
+  if(ag){const l=d.achievements||[];as.style.display=l.length?"":"none";
+    ag.innerHTML=l.map(a=>`<div class="card"><h3>${esc(a.title)}</h3><p>${esc(a.description)}</p><div class="meta num">${esc(a.date||"")}</div></div>`).join('')}
+  const gl=document.getElementById('galleryGrid'),gs=document.getElementById('gallery');
+  if(gl){const l=d.gallery||[];gs.style.display=l.length?"":"none";
+    gl.innerHTML=l.map(g=>`<div class="g-item" data-img="${esc(g.image)}" role="button" tabindex="0"><img src="${esc(g.image)}" alt="${esc(g.caption||'Event photo')}"></div>`).join('');
+    gl.querySelectorAll('.g-item').forEach(el=>{const o=()=>openModal(el.dataset.img);el.addEventListener('click',o);el.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();o()}})})}
+  reveal();
+}
+function reveal(){
+  const els=document.querySelectorAll('.rv:not(.in)');
+  if(!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('in'));return}
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+  els.forEach(e=>io.observe(e));
+}
+fetch('data.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw 0;return r.json()}).then(render).catch(()=>render(DEFAULT_DATA));
+
+const tgl=document.getElementById('navToggle'),mb=document.getElementById('navMobile');
+tgl.addEventListener('click',()=>{const o=mb.classList.toggle('open');tgl.setAttribute('aria-expanded',o)});
+mb.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{mb.classList.remove('open');tgl.setAttribute('aria-expanded',false)}));
+
+
+// soft spotlight that follows the pointer on cards and the results board
+if(matchMedia('(hover:hover) and (pointer:fine)').matches){
+  document.addEventListener('pointermove',e=>{
+    const t=e.target.closest&&e.target.closest('.card,.board');
+    if(!t)return;
+    const r=t.getBoundingClientRect();
+    t.style.setProperty('--mx',(e.clientX-r.left)+'px');
+    t.style.setProperty('--my',(e.clientY-r.top)+'px');
+  },{passive:true});
 }
 
-function closeCertModal(){
-  const overlay = document.getElementById('certModalOverlay');
-  const content = document.getElementById('certModalContent');
-  if(overlay) overlay.classList.remove('active');
-  if(content) content.innerHTML = '';
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  const closeBtn = document.getElementById('certModalClose');
-  const overlay = document.getElementById('certModalOverlay');
-  if(closeBtn) closeBtn.addEventListener('click', closeCertModal);
-  if(overlay) overlay.addEventListener('click', (e) => { if(e.target === overlay) closeCertModal(); });
-  document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeCertModal(); });
-});
-
-function renderPortfolio(data){
-  // Nav + hero name
-  document.title = data.fullName + " — Portfolio";
-  const navName = document.getElementById('navFullName');
-  if(navName) navName.textContent = data.fullName;
-
-  const heroName = document.getElementById('heroName');
-  if(heroName){
-    const l1 = data.heroNameLine1 || data.fullName;
-    const l2 = data.heroNameLine2 || "";
-    heroName.innerHTML = escapeHtml(l1) + (l2 ? "<br/>" + escapeHtml(l2) : "");
-  }
-  const tagline = document.getElementById('heroTagline');
-  if(tagline) tagline.textContent = data.tagline || "";
-
-  // Hero photo
-  const photoBox = document.getElementById('heroPhoto');
-  if(photoBox){
-    if(data.heroPhoto){
-      photoBox.classList.remove('hero-photo-empty');
-      photoBox.innerHTML = `<img src="${escapeHtml(data.heroPhoto)}" alt="${escapeHtml(data.fullName)}" style="width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:14px;">`;
-      photoBox.style.border = "none";
-    } else {
-      const initials = (data.fullName || "").trim().split(/\s+/).filter(Boolean).slice(0,2).map(w => w[0].toUpperCase()).join('') || "—";
-      photoBox.classList.add('hero-photo-empty');
-      photoBox.innerHTML = `<div class="hero-initials">${escapeHtml(initials)}</div>`;
-    }
-  }
-
-  // Stats
-  const statGrid = document.getElementById('statGrid');
-  if(statGrid && data.stats && data.stats.length){
-    statGrid.innerHTML = data.stats.map(s => `
-      <div class="stat"><div class="num">${escapeHtml(s.num)}</div><div class="lbl">${escapeHtml(s.label)}</div></div>
-    `).join('');
-  }
-
-  // Certifications
-  const certGrid = document.getElementById('certGrid');
-  const certSection = document.getElementById('certifications');
-  if(certGrid){
-    const list = (data.certifications || []);
-    if(certSection) certSection.style.display = list.length ? "" : "none";
-    certGrid.innerHTML = list.map(c => renderCertCard(c)).join('');
-    bindCertClicks(certGrid);
-  }
-
-  // Research certifications
-  const rcGrid = document.getElementById('researchCertGrid');
-  if(rcGrid){
-    const list = (data.researchCertifications || []);
-    rcGrid.innerHTML = list.map(c => renderCertCard(c)).join('');
-    bindCertClicks(rcGrid);
-  }
-
-  // Achievements
-  const achGrid = document.getElementById('achievementGrid');
-  if(achGrid){
-    const list = (data.achievements || []);
-    achGrid.innerHTML = list.map(a => `
-      <div class="card">
-        <h3>${escapeHtml(a.title)}</h3>
-        <p>${escapeHtml(a.description)}</p>
-        <div class="meta">${escapeHtml(a.date || "")}</div>
-      </div>
-    `).join('');
-  }
-
-  // Gallery
-  const gal = document.getElementById('galleryGrid');
-  const gallerySection = document.getElementById('gallery');
-  if(gal){
-    const list = (data.gallery || []);
-    if(gallerySection) gallerySection.style.display = list.length ? "" : "none";
-    gal.innerHTML = list.map(g => `
-      <div class="g-item"><img src="${escapeHtml(g.image)}" alt="${escapeHtml(g.caption || '')}"></div>
-    `).join('');
-  }
-}
-
-// Try loading live data.json (works once hosted on http/https, e.g. GitHub Pages).
-// Falls back to DEFAULT_DATA if fetch fails (e.g. opened as a local file://).
-fetch('data.json', { cache: 'no-store' })
-  .then(res => { if(!res.ok) throw new Error('no data.json'); return res.json(); })
-  .then(data => renderPortfolio(data))
-  .catch(() => renderPortfolio(DEFAULT_DATA));
-
-// Mobile nav toggle
-const navToggle = document.getElementById('navToggle');
-const navMobile = document.getElementById('navMobile');
-if(navToggle && navMobile){
-  navToggle.addEventListener('click', () => navMobile.classList.toggle('open'));
-  navMobile.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => navMobile.classList.remove('open'));
-  });
-}
+function tick(){const c=document.getElementById('clock');if(c)c.textContent=new Date().toLocaleTimeString('en-GB',{timeZone:'Asia/Dhaka',hour:'2-digit',minute:'2-digit'})+' (UTC+6)'}
+tick();setInterval(tick,30000);
 </script>
-
 </body>
 </html>
